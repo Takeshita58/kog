@@ -6,9 +6,13 @@ import { Link as Scroll } from 'react-scroll';
 function App() {
   
   return (
+<<<<<<< HEAD
     <div className="App">
 
       <MediaQuery query="(min-width: 768px)">
+=======
+    <div className="bg-red-500 text-center">
+>>>>>>> parent of de2492f (del tailwind)
       <header className="App-header">
         
         <div className='flex between'>

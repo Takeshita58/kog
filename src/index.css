@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+>>>>>>> parent of de2492f (del tailwind)
 
 body {
   margin: 0;
