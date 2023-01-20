@@ -60,12 +60,11 @@ function App() {
         <div id="about" className='mconteTow' style={{border: "none", marginTop:"-1px"}}>
           <div className='mmidashi'>About Us</div>
           <div className='mhonbun'>
-            A smiling four-legged friend conquers the world. The cuddly Shiba Inu Maru from Japan has cult status in its home country and is now conquering hearts all over the world.
-            <br/>Maru now has over millions of followers on social media.
-            The dog from Japan is friendly, fluffy and soft, likes to play, has lots of animal friends and likes to be cuddled and spoiled.
+          Japan's famous and loyal Shiba Inu Hachi was very popular in his home country and impressed people all over the world.<br/>
+Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's return in good health. A magnificent bronze statue of Hachi was erected in front of Shibuya Station in Japan to commemorate the dog's loyalty.
           </div>
           <div className='mhonbun' style={{marginTop: "20px"}}>
-            So it's hardly surprising that Maru now even acts as the official tourism ambassador of Mie Prefecture.
+          He is watching over everyone with kind eyes today.
             <br/>Official Ca:<a href='https://www.google.com/' rel="noreferrer" target="_blank" style={{color:"white"}}>0x935...03904</a>
           </div>
         </div>
@@ -175,7 +174,7 @@ function App() {
               <div style={{textAlign:"left"}}>
                 <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#ffd700", marginBottom: "3px"}}>$SHIBI</div>
                 <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>Shibuya Inu</div>
-                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>The World's Most Famous Shibuya Inu, Hachi, Is Now Taking The Blockchain.</div>
+                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>The World's Most Famous Shibuya Inu, Hachi, Is Now Taking The Binance Smart Chain.</div>
                 <div className='flex between'>
                   <div className='item'><span>Buy Now</span></div>
                   <div className='item'><span>Live Chart</span></div>
@@ -191,13 +190,12 @@ function App() {
         <div id="about" className='conteTow' style={{border: "none"}}>
           <div className='midashi'>About Us</div>
           <div className='honbun'>
-            A smiling four-legged friend conquers the world. The cuddly Shiba Inu Maru from Japan has cult status in its home country and is now conquering hearts all over the world.
-            <br/>Maru now has over millions of followers on social media.
-            The dog from Japan is friendly, fluffy and soft, likes to play, has lots of animal friends and likes to be cuddled and spoiled.
+          Japan's famous and loyal Shiba Inu Hachi was very popular in his home country and impressed people all over the world.<br/>
+Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's return in good health. A magnificent bronze statue of Hachi was erected in front of Shibuya Station in Japan to commemorate the dog's loyalty.
           </div>
           <div className='honbun' style={{marginTop: "20px"}}>
-            So it's hardly surprising that Maru now even acts as the official tourism ambassador of Mie Prefecture.
-            <br/>Official Ca: 0x9355A6b0227B0A77D74D67dD1EECA78903603904
+          He is watching over everyone with kind eyes today.
+            <br/>Official Ca: 
           </div>
         </div>
 
