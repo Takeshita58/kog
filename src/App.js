@@ -42,7 +42,7 @@ function App() {
               <div style={{textAlign:"left"}}>
                 <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#ffd700", marginBottom: "3px"}}>$SHIBI</div>
                 <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>Shibuya Inu</div>
-                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>The World's Most Famous Shibuya Inu, Hachi, Is Now Taking The Blockchain.</div>
+                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>The World's Most Famous Shibuya Inu, Hachi, Is Now Taking The Binance Smart Chain.</div>
                 <div className='flex between'>
                   <div className='mitem'><span>Buy Now</span></div>
                   <div className='mitem'><span>Live Chart</span></div>
