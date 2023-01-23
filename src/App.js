@@ -48,8 +48,8 @@ function App() {
                   <div className='mitem'><span>Live Chart</span></div>
                 </div>
                 <div className='flex between'>
-                  <div className='mitem'><span>Telegram</span></div>
-                  <div className='mitem'><span>Twitter</span></div>
+                  <div className='mitem'><span><a href='https://t.me/shibuyainutoken' rel="noreferrer" target="_blank">Telegram</a></span></div>
+                  <div className='mitem'><span><a href='https://twitter.com/Shibu_inu_token' rel="noreferrer" target="_blank">Twitter</a></span></div>
                 </div>
               </div>
             </div>
@@ -65,7 +65,7 @@ Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's re
           </div>
           <div className='mhonbun' style={{marginTop: "20px"}}>
           He is watching over everyone with kind eyes today.
-            <br/>Official Ca:<a href='https://www.google.com/' rel="noreferrer" target="_blank" style={{color:"white"}}>0x935...03904</a>
+            <br/>Official Ca:<a href='https://bscscan.com/address/0x2FA9673A7197c43233D66B2c4dBdc883F877420f' rel="noreferrer" target="_blank" style={{color:"white"}}>0x2FA96...77420f</a>
           </div>
         </div>
 
@@ -178,8 +178,8 @@ Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's re
                 <div className='flex between'>
                   <div className='item'><span>Buy Now</span></div>
                   <div className='item'><span>Live Chart</span></div>
-                  <div className='item'><span>Telegram</span></div>
-                  <div className='item'><span>Twitter</span></div>
+                  <div className='item'><span><a href='https://t.me/shibuyainutoken' rel="noreferrer" target="_blank">Telegram</a></span></div>
+                  <div className='item'><span><a href='https://twitter.com/Shibu_inu_tokenTelegram' rel="noreferrer" target="_blank">Twitter</a></span></div>
                 </div>
               </div>
             </div>
@@ -195,7 +195,7 @@ Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's re
           </div>
           <div className='honbun' style={{marginTop: "20px"}}>
           He is watching over everyone with kind eyes today.
-            <br/>Official Ca: 
+            <br/>Official Ca: 0x2FA9673A7197c43233D66B2c4dBdc883F877420f
           </div>
         </div>
 
@@ -280,8 +280,8 @@ Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's re
               <div style={{textAlign: "left", color: "antiquewhite",marginRight: "200px"}}>
                 <div style={{fontWeight: "bold", marginBottom: "10px"}}>Subscribe Us</div>
                 <div className='flex between'>
-                  <img alt="twitter" src={"/icons8-twitter-circled-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
-                  <img alt="telegram" src={"/icons8-telegram-app-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
+                  <img  href='https://twitter.com/Shibu_inu_token' rel="noreferrer" target="_blank" alt="twitter" src={"/icons8-twitter-circled-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
+                  <img  href='https://t.me/shibuyainutoken' rel="noreferrer" target="_blank" alt="telegram" src={"/icons8-telegram-app-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
                 </div>
               </div>
           </div>
