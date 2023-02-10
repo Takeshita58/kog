@@ -12,7 +12,7 @@ function App() {
       <header className="App-header">
         
         <div className='flex between'>
-          <img alt="icon" src={"/inu.png"} className="logo"/>
+          <img alt="icon" src={"/oumc.jpg"} className="logo"/>
           <div style={{display: "table"}}>
             <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMO Oracle</div>
           </div>
@@ -274,7 +274,7 @@ Our goal is to promote sumo internationally. We have already partnered with seve
           
               <div style={{marginRight: "150px"}}>
                 <div style={{display: "flex"}}>
-                  <img alt="icon" src={"/inu.png"} className="logo"/>
+                  <img alt="icon" src={"/oumc.jpg"} className="logo"/>
                   <div style={{display: "table"}}>
                     <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMOU Oracle</div>
                   </div>
