@@ -14,7 +14,7 @@ function App() {
         <div className='flex between'>
           <img alt="icon" src={"/inu.png"} className="logo"/>
           <div style={{display: "table"}}>
-            <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#ffd700"}}>Shibuya Inu</div>
+            <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMO Oracle</div>
           </div>
         </div>
 
@@ -29,7 +29,7 @@ function App() {
             <div className='flex between'>
               <img alt="icon" src={"/inu.png"} className="logo"/>
               <div style={{display: "table"}}>
-                <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#ffd700"}}>Shibuya Inu</div>
+                <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMO Oracle</div>
               </div>
             </div>
             
@@ -40,16 +40,16 @@ function App() {
           <div style={{paddingLeft: "5%", width: "90%", height:"100%", alignItems: "center", display:"flex"}}>
             <div style={{width:"100%"}}>
               <div style={{textAlign:"left"}}>
-                <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#ffd700", marginBottom: "3px"}}>$SHIBI</div>
-                <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>Shibuya Inu</div>
-                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>The World's Most Famous Shibuya Inu, Hachi, Is Now Taking The Binance Smart Chain.</div>
+                <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#cc3600", marginBottom: "3px"}}>$OUMC</div>
+                <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMO Oracle</div>
+                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumo, Japan's traditional national sport, throughout the world.</div>
                 <div className='flex between'>
                   <div className='mitem'><span>Buy Now</span></div>
                   <div className='mitem'><span>Live Chart</span></div>
                 </div>
                 <div className='flex between'>
-                  <div className='mitem'><span><a href='https://t.me/shibuyainutoken' rel="noreferrer" target="_blank">Telegram</a></span></div>
-                  <div className='mitem'><span><a href='https://twitter.com/Shibu_inu_token' rel="noreferrer" target="_blank">Twitter</a></span></div>
+                  <div className='mitem'><span>Telegram</span></div>
+                  <div className='mitem'><span>Twitter</span></div>
                 </div>
               </div>
             </div>
@@ -60,12 +60,18 @@ function App() {
         <div id="about" className='mconteTow' style={{border: "none", marginTop:"-1px"}}>
           <div className='mmidashi'>About Us</div>
           <div className='mhonbun'>
-          Japan's famous and loyal Shiba Inu Hachi was very popular in his home country and impressed people all over the world.<br/>
-Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's return in good health. A magnificent bronze statue of Hachi was erected in front of Shibuya Station in Japan to commemorate the dog's loyalty.
+          Sumo is a traditional Japanese martial art in which big, fat men clash naked. They eat, sleep, and train repeatedly to build up their huge bodies.
+
+Their powerful fights are televised and very popular.
+As proof, there are countless "Sumo" competitions all over the world.
+
+Our goal is to promote sumo internationally. We have already partnered with several sports betting services, and for this reason we decided that it was necessary to have a reliable reference of sumo results on the blockchain.
+
+
           </div>
           <div className='mhonbun' style={{marginTop: "20px"}}>
-          He is watching over everyone with kind eyes today.
-            <br/>Official Ca:<a href='https://bscscan.com/address/0x2FA9673A7197c43233D66B2c4dBdc883F877420f' rel="noreferrer" target="_blank" style={{color:"white"}}>0x2FA96...77420f</a>
+          Come on! Join us and bring the excitement of Sumo to the world!
+            <br/>Official Ca:<a href='https://www.google.com/' rel="noreferrer" target="_blank" style={{color:"white"}}>0x935...03904</a>
           </div>
         </div>
 
@@ -139,7 +145,7 @@ Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's re
               <div className='flex between'>
                 <img alt="icon" src={"/inu.png"} className="logo"/>
                 <div style={{display: "table"}}>
-                  <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#ffd700"}}>Shibuya Inu</div>
+                  <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMO Oracle</div>
                 </div>
               </div>
             </div>
@@ -172,14 +178,14 @@ Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's re
           <div style={{paddingLeft: "12%", width: "40%", height:"100%", alignItems: "center", display:"flex"}}>
             <div style={{width:"100%"}}>
               <div style={{textAlign:"left"}}>
-                <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#ffd700", marginBottom: "3px"}}>$SHIBI</div>
-                <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>Shibuya Inu</div>
-                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>The World's Most Famous Shibuya Inu, Hachi, Is Now Taking The Binance Smart Chain.</div>
+                <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#cc3600", marginBottom: "3px"}}>$OUMC</div>
+                <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMO Oracle</div>
+                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumo, Japan's traditional national sport, throughout the world.</div>
                 <div className='flex between'>
                   <div className='item'><span>Buy Now</span></div>
                   <div className='item'><span>Live Chart</span></div>
-                  <div className='item'><span><a href='https://t.me/shibuyainutoken' rel="noreferrer" target="_blank">Telegram</a></span></div>
-                  <div className='item'><span><a href='https://twitter.com/Shibu_inu_tokenTelegram' rel="noreferrer" target="_blank">Twitter</a></span></div>
+                  <div className='item'><span>Telegram</span></div>
+                  <div className='item'><span>Twitter</span></div>
                 </div>
               </div>
             </div>
@@ -190,12 +196,18 @@ Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's re
         <div id="about" className='conteTow' style={{border: "none"}}>
           <div className='midashi'>About Us</div>
           <div className='honbun'>
-          Japan's famous and loyal Shiba Inu Hachi was very popular in his home country and impressed people all over the world.<br/>
-Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's return in good health. A magnificent bronze statue of Hachi was erected in front of Shibuya Station in Japan to commemorate the dog's loyalty.
+          Sumo is a traditional Japanese martial art in which big, fat men clash naked. They eat, sleep, and train repeatedly to build up their huge bodies.
+
+Their powerful fights are televised and very popular.
+As proof, there are countless "Sumo" competitions all over the world.
+
+Our goal is to promote sumo internationally. We have already partnered with several sports betting services, and for this reason we decided that it was necessary to have a reliable reference of sumo results on the blockchain.
+
+
           </div>
           <div className='honbun' style={{marginTop: "20px"}}>
-          He is watching over everyone with kind eyes today.
-            <br/>Official Ca: 0x2FA9673A7197c43233D66B2c4dBdc883F877420f
+          Come on! Join us and bring the excitement of Sumo to the world!
+            <br/>Official Ca: 
           </div>
         </div>
 
@@ -264,10 +276,10 @@ Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's re
                 <div style={{display: "flex"}}>
                   <img alt="icon" src={"/inu.png"} className="logo"/>
                   <div style={{display: "table"}}>
-                    <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#ffd700"}}>Shibuya Inu</div>
+                    <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMOU Oracle</div>
                   </div>
                 </div>
-                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>The World's Most Famous Shibuya Inu, Hachi, <br/>Is Now Taking The Blockchain.</div>
+                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>Our goal is to promote sumo, <br/>Japan's traditional national sport, <br/>throughout the world.</div>
               </div>
               
 
@@ -280,8 +292,8 @@ Hachi was a very loyal and cuddly Shiba Inu who kept waiting for his master's re
               <div style={{textAlign: "left", color: "antiquewhite",marginRight: "200px"}}>
                 <div style={{fontWeight: "bold", marginBottom: "10px"}}>Subscribe Us</div>
                 <div className='flex between'>
-                  <img  href='https://twitter.com/Shibu_inu_token' rel="noreferrer" target="_blank" alt="twitter" src={"/icons8-twitter-circled-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
-                  <img  href='https://t.me/shibuyainutoken' rel="noreferrer" target="_blank" alt="telegram" src={"/icons8-telegram-app-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
+                  <img alt="twitter" src={"/icons8-twitter-circled-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
+                  <img alt="telegram" src={"/icons8-telegram-app-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
                 </div>
               </div>
           </div>
