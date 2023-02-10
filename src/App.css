@@ -176,14 +176,14 @@ div.mitem{
   width:130px;
   height:50px;
   margin-bottom: 10px;
-  background-color: #ffd700;
+  background-color: #cc3600;
   display:flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   border-radius: 30px;
   cursor: pointer;
-
+  color: whitesmoke;
 }
 
 .between{

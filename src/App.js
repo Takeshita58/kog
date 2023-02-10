@@ -14,7 +14,7 @@ function App() {
         <div className='flex between'>
           <img alt="icon" src={"/oumc.jpg"} className="logo"/>
           <div style={{display: "table"}}>
-            <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "medium", color: "#cc3600"}}>SUMO Oracle</div>
+            <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "medium", color: "#cc3600"}}>SUMOU Oracle</div>
           </div>
         </div>
 
@@ -27,9 +27,9 @@ function App() {
           <header className="mApp-header">
             
             <div className='flex between'>
-              <img alt="icon" src={"/inu.png"} className="logo"/>
+              <img alt="icon" src={"/oumc.jpg"} className="logo"/>
               <div style={{display: "table"}}>
-                <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMO Oracle</div>
+                <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMOU Oracle</div>
               </div>
             </div>
             
@@ -41,8 +41,8 @@ function App() {
             <div style={{width:"100%"}}>
               <div style={{textAlign:"left"}}>
                 <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#cc3600", marginBottom: "3px"}}>$OUMC</div>
-                <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMO Oracle</div>
-                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumo, Japan's traditional national sport, throughout the world.</div>
+                <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMOU Oracle</div>
+                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumou, Japan's traditional national sport, throughout the world.</div>
                 <div className='flex between'>
                   <div className='mitem'><span>Buy Now</span></div>
                   <div className='mitem'><span>Live Chart</span></div>
@@ -60,17 +60,17 @@ function App() {
         <div id="about" className='mconteTow' style={{border: "none", marginTop:"-1px"}}>
           <div className='mmidashi'>About Us</div>
           <div className='mhonbun'>
-          Sumo is a traditional Japanese martial art in which big, fat men clash naked. They eat, sleep, and train repeatedly to build up their huge bodies.
+          Sumou is a traditional Japanese martial art in which big, fat men clash naked. They eat, sleep, and train repeatedly to build up their huge bodies.
 
 Their powerful fights are televised and very popular.
-As proof, there are countless "Sumo" competitions all over the world.
+As proof, there are countless "Sumou" competitions all over the world.
 
-Our goal is to promote sumo internationally. We have already partnered with several sports betting services, and for this reason we decided that it was necessary to have a reliable reference of sumo results on the blockchain.
+Our goal is to promote sumou internationally. We have already partnered with several sports betting services, and for this reason we decided that it was necessary to have a reliable reference of sumou results on the blockchain.
 
 
           </div>
           <div className='mhonbun' style={{marginTop: "20px"}}>
-          Come on! Join us and bring the excitement of Sumo to the world!
+          Come on! Join us and bring the excitement of Sumou to the world!
             <br/>Official Ca:<a href='https://www.google.com/' rel="noreferrer" target="_blank" style={{color:"white"}}>0x935...03904</a>
           </div>
         </div>
@@ -143,9 +143,9 @@ Our goal is to promote sumo internationally. We have already partnered with seve
           <div>
             <div style={{width:"30%", marginRight:"auto", marginLeft:"auto", marginBottom: "30px", marginTop: "10px"}}>
               <div className='flex between'>
-                <img alt="icon" src={"/inu.png"} className="logo"/>
+                <img alt="icon" src={"/oumc.jpg"} className="logo"/>
                 <div style={{display: "table"}}>
-                  <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMO Oracle</div>
+                  <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMOU Oracle</div>
                 </div>
               </div>
             </div>
@@ -157,7 +157,7 @@ Our goal is to promote sumo internationally. We have already partnered with seve
               <div style={{textAlign: "center", color: "antiquewhite", marginBottom: "30px"}}>
                 <div style={{fontWeight: "bold", marginBottom: "10px"}}>Other Links</div>
                 <div className='footerLink' style={{cursor: "pointer"}}>Dextools</div>
-                <div className='footerLink' style={{cursor: "pointer"}}>Etherscan</div>
+                <div className='footerLink' style={{cursor: "pointer"}}>BSCscan</div>
               </div>
 
               <div style={{textAlign: "center", color: "antiquewhite"}}>
@@ -180,7 +180,7 @@ Our goal is to promote sumo internationally. We have already partnered with seve
               <div style={{textAlign:"left"}}>
                 <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#cc3600", marginBottom: "3px"}}>$OUMC</div>
                 <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMO Oracle</div>
-                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumo, Japan's traditional national sport, throughout the world.</div>
+                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumou, Japan's traditional national sport, throughout the world.</div>
                 <div className='flex between'>
                   <div className='item'><span>Buy Now</span></div>
                   <div className='item'><span>Live Chart</span></div>
@@ -196,17 +196,17 @@ Our goal is to promote sumo internationally. We have already partnered with seve
         <div id="about" className='conteTow' style={{border: "none"}}>
           <div className='midashi'>About Us</div>
           <div className='honbun'>
-          Sumo is a traditional Japanese martial art in which big, fat men clash naked. They eat, sleep, and train repeatedly to build up their huge bodies.
+          Sumou is a traditional Japanese martial art in which big, fat men clash naked. They eat, sleep, and train repeatedly to build up their huge bodies.
 
 Their powerful fights are televised and very popular.
-As proof, there are countless "Sumo" competitions all over the world.
+As proof, there are countless "Sumou" competitions all over the world.
 
-Our goal is to promote sumo internationally. We have already partnered with several sports betting services, and for this reason we decided that it was necessary to have a reliable reference of sumo results on the blockchain.
+Our goal is to promote sumou internationally. We have already partnered with several sports betting services, and for this reason we decided that it was necessary to have a reliable reference of sumou results on the blockchain.
 
 
           </div>
           <div className='honbun' style={{marginTop: "20px"}}>
-          Come on! Join us and bring the excitement of Sumo to the world!
+          Come on! Join us and bring the excitement of Sumou to the world!
             <br/>Official Ca: 
           </div>
         </div>
@@ -279,14 +279,14 @@ Our goal is to promote sumo internationally. We have already partnered with seve
                     <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMOU Oracle</div>
                   </div>
                 </div>
-                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>Our goal is to promote sumo, <br/>Japan's traditional national sport, <br/>throughout the world.</div>
+                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>Our goal is to promote sumou, <br/>Japan's traditional national sport, <br/>throughout the world.</div>
               </div>
               
 
               <div style={{textAlign: "left", color: "antiquewhite",marginRight: "200px"}}>
                 <div style={{fontWeight: "bold", marginBottom: "10px"}}>Other Links</div>
                 <div className='footerLink' style={{cursor: "pointer"}}>Dextools</div>
-                <div className='footerLink' style={{cursor: "pointer"}}>Etherscan</div>
+                <div className='footerLink' style={{cursor: "pointer"}}>BSCscan</div>
               </div>
 
               <div style={{textAlign: "left", color: "antiquewhite",marginRight: "200px"}}>
