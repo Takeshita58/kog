@@ -179,7 +179,7 @@ Our goal is to promote sumou internationally. We have already partnered with sev
             <div style={{width:"100%"}}>
               <div style={{textAlign:"left"}}>
                 <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#cc3600", marginBottom: "3px"}}>$OUMC</div>
-                <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMO Oracle</div>
+                <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMOU Oracle</div>
                 <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumou, Japan's traditional national sport, throughout the world.</div>
                 <div className='flex between'>
                   <div className='item'><span>Buy Now</span></div>
