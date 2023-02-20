@@ -1,9 +1,113 @@
 import './App.css';
 import MediaQuery from "react-responsive";
 import bg from './bg01.png'
+import { useState, useEffect } from 'react'
+import Web3 from 'web3'
+
 
 
 function App() {
+  const [shortAddress, setShortAddress] = useState(null);
+  const [connect, setConnect] = useState(false);
+  const [defaultAccount, setDefaiultAccount] = useState(null);
+  const [contract, setContract] = useState(null);
+  const [NFTBalance, SetNFTBlance] = useState(0);
+  const [amount, setAmount] = useState(1);
+  const [supply, setSupply] = useState(0);
+  const [paused, setPaused] = useState();
+  const test = false;
+  const [testUser, setTestUser] = useState(false);
+  
+  const notWLmessage = "Wallet address is not whitelisted";
+  const [whitelistMessa, setWhiteListMessa] = useState(null);
+  const NFTContractAddress = '0xB83C3CA6e22EF50EC13dC56B6D0729Aef6b4546E';
+  const openseaURL = 'https://opensea.io/collection/voxvot-blindvox';
+  const [txHashUrl, setTxHashUrl] = useState(null);
+  const [waiting, setWaiting] = useState(false);
+  const [soldOut, setSoldOut] = useState(false);
+  const [isRevealable, setIsRevealable] = useState(false);
+  const [wlMintcount, setWlMintCount] = useState(0);
+  const [wlMintLimit, setWlMintLimit] = useState(0);
+  const [publicMintLimit, setPublicMintLimit] = useState(0);
+  const [publicMintCount, setPubliMintCount] = useState(0);
+  const [modalIsOpen,setIsOpen] = useState(false);
+
+  const [isPublicMint, setIsPublicMint] = useState(false);
+  const [isWLMint, setIsWLMint] = useState(false);
+  const [wave, setWave] = useState(0);
+
+  const [wlMinted, setWLMinted] = useState(false);
+  const [publicMinted, setPublicMinted] = useState(false);
+
+  const [errorMessage, setErrorMessage] = useState(null);
+  const mintState =  ["OG Mint", "PV1", "PV2", "Public Mint"];
+
+  const metamaskLogin = async (e) => {
+    e.preventDefault();
+    setWaiting(true);
+    
+
+    if (window.ethereum && window.ethereum.isMetaMask){
+      
+        await window.ethereum.request({method: 'eth_requestAccounts'});
+        const web3 = new Web3(window.ethereum);
+        let chainID = await web3.eth.net.getId();
+        console.log(chainID)
+              if(chainID == 56){
+                  let account = (await web3.eth.getAccounts())[0];
+                  
+                  setShortAddress(account.substr(0, 5) + "..." + account.substr(-4, 4));
+                  accountChangeHandlerM(account);
+                  //const _NFTContract = new web3.eth.Contract(voxvotNFT_abi, NFTContractAddress);
+                  //setContract(_NFTContract);
+              } else {
+                try{
+                  await window.ethereum.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: '0x38' }], // chainId must be in hexadecimal numbers
+                  })
+                }catch(error){
+                  setWaiting(false);
+                }
+                
+                  setErrorMessage('Please chenge network to BSC mainnet. Change network and refresh page.');
+                  setWaiting(false);
+              }
+    } else {
+        //console.log("need to install metamask");
+        setErrorMessage('Please install MetaMask');
+        setWaiting(false);
+    }
+  };
+
+  const initOnchanged = () =>{
+    if(window.ethereum){
+        window.ethereum.on("accountsChanged", () => {
+            window.location.reload();
+        });
+        window.ethereum.on("chainChanged", () => {
+            window.location.reload();
+        });
+    }
+  };
+
+  const accountChangeHandlerM = (newAddress) => {
+    setDefaiultAccount(newAddress);
+  }
+
+  useEffect(() => {
+    //initOnchanged();
+    
+  },[]);
+
+  useEffect( () => {
+    if(contract != null){
+      (async () => {
+        setConnect(true);
+        setWaiting(false);
+      })();
+    }
+  },[contract]);
   
   return (
     <div className="App">
@@ -44,7 +148,7 @@ function App() {
                 <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMOU Oracle</div>
                 <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumou, Japan's traditional national sport, throughout the world.</div>
                 <div className='flex between'>
-                  <div className='mitem'><span>Buy Now</span></div>
+                  <div className='mitem'><span>uy Now</span></div>
                   <div className='mitem'><span>Live Chart</span></div>
                 </div>
                 <div className='flex between'>
@@ -182,7 +286,10 @@ Our goal is to promote sumou internationally. We have already partnered with sev
                 <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMOU Oracle</div>
                 <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumou, Japan's traditional national sport, throughout the world.</div>
                 <div className='flex between'>
-                  <div className='item'><span>Buy Now</span></div>
+                  <div className='item'
+                    onClick={ async (event) =>{
+                            await metamaskLogin(event);
+                          }}><span>Buy Now</span></div>
                   <div className='item'><span>Live Chart</span></div>
                   <div className='item'><span>Telegram</span></div>
                   <div className='item'><span>Twitter</span></div>
@@ -191,6 +298,50 @@ Our goal is to promote sumou internationally. We have already partnered with sev
             </div>
           </div>
 
+        </div>
+
+        <div id="about" className='conteTow' style={{border: "none"}}>
+          <div className='midashi'>OUMC NFT</div>
+          <div className='honbun'>
+          Buybacks will be made every 50Tx until 300Tx after the token sale begins.<br/>
+          50% of the repurchased tokens will be locked in a contract and distributed to OUMC NFT holders.<br/>
+          Distribution will begin after 300Tx has been executed or 48 hours after the start of the sale.<br/>
+          Details of the distribution start time will be announced separately.<br/>
+          Claims must be made during the specified time period. Contracts will be destroyed after the claimable period.
+          </div>
+          <div className='honbun' style={{marginTop: "20px"}}>
+            <br/>NFT Ca: 
+          </div>
+          <div style={{width:"20%", marginRight:"auto", marginLeft:"auto"}}>
+            <p style={{textAlign: "left", color:"#ffffff"}}>connect wallet: {shortAddress}</p>
+            <p style={{textAlign: "left", color:"#ffffff"}}>NFT balance: {NFTBalance}</p>
+            <p style={{textAlign: "left", color:"#ffffff"}}>total reward amount: 0000 $OUMC</p>
+            <p style={{textAlign: "left", color:"#ffffff"}}>reward per NFT: 000 $OUMC</p>
+            <p style={{textAlign: "left", color:"#ffffff"}}>price: FREE Mint</p>
+            
+            {defaultAccount == null ? (
+              <>
+                <div style={{width:"100%", backgroundColor: "#ffffff", paddingTop: "5px", paddingBottom:"5px", marginBottom:"10px"}}>total supply : -/200</div>
+                <div style={{width:"50%", marginRight:"auto", marginLeft:"auto"}}>
+                  <div className='item'
+                    onClick={ async (event) =>{
+                            await metamaskLogin(event);
+                          }}><span>Connect</span></div>
+                </div>
+              </>
+            ):(
+              <>
+                <div style={{width:"100%", backgroundColor: "#ffffff", paddingTop: "5px", paddingBottom:"5px", marginBottom:"10px"}}>total supply :{200-supply}/200</div>
+                <div className='flex between'>
+                      <div className='item'
+                        onClick={ async (event) =>{
+                                await metamaskLogin(event);
+                              }}><span>Mint</span></div>
+                      <div className='item' style={{backgroundColor:"#696969"}}><span>Claim</span></div>
+                </div>
+              </>
+            )}
+          </div>
         </div>
 
         <div id="about" className='conteTow' style={{border: "none"}}>
@@ -210,6 +361,8 @@ Our goal is to promote sumou internationally. We have already partnered with sev
             <br/>Official Ca: 
           </div>
         </div>
+
+        
 
         <div id="tokenomics" className='conteTow' style={{border: "none"}}>
         <div className='midashi'>Tokenomics</div>
