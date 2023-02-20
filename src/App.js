@@ -322,8 +322,8 @@ Our goal is to promote sumou internationally. We have already partnered with sev
             {defaultAccount == null ? (
               <>
                 <div style={{width:"100%", backgroundColor: "#ffffff", paddingTop: "5px", paddingBottom:"5px", marginBottom:"10px"}}>total supply : -/200</div>
-                <div style={{width:"50%", marginRight:"auto", marginLeft:"auto"}}>
-                  <div className='item'
+                <div style={{marginRight:"auto", marginLeft:"auto"}}>
+                  <div className='citem'
                     onClick={ async (event) =>{
                             await metamaskLogin(event);
                           }}><span>Connect</span></div>

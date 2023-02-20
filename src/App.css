@@ -172,6 +172,19 @@ div.item{
   color: whitesmoke;
 }
 
+div.citem{
+  width:100%;
+  height:50px;
+  background-color: #cc3600;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  border-radius: 30px;
+  cursor: pointer;
+  color: whitesmoke;
+}
+
 div.mitem{
   width:130px;
   height:50px;
