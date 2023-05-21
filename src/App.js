@@ -1,8 +1,8 @@
-import './App.css';
-import MediaQuery from "react-responsive";
-import bg from './bg01.png'
+
 import { useState, useEffect } from 'react'
 import Web3 from 'web3'
+import { createCanvas,loadImage } from 'canvas';
+import ReactDOM from "react-dom"
 
 
 
@@ -11,36 +11,125 @@ function App() {
   const [connect, setConnect] = useState(false);
   const [defaultAccount, setDefaiultAccount] = useState(null);
   const [contract, setContract] = useState(null);
-  const [NFTBalance, SetNFTBlance] = useState(0);
-  const [amount, setAmount] = useState(1);
-  const [supply, setSupply] = useState(0);
-  const [paused, setPaused] = useState();
-  const test = false;
-  const [testUser, setTestUser] = useState(false);
-  
-  const notWLmessage = "Wallet address is not whitelisted";
-  const [whitelistMessa, setWhiteListMessa] = useState(null);
-  const NFTContractAddress = '0xB83C3CA6e22EF50EC13dC56B6D0729Aef6b4546E';
-  const openseaURL = 'https://opensea.io/collection/voxvot-blindvox';
-  const [txHashUrl, setTxHashUrl] = useState(null);
   const [waiting, setWaiting] = useState(false);
-  const [soldOut, setSoldOut] = useState(false);
-  const [isRevealable, setIsRevealable] = useState(false);
-  const [wlMintcount, setWlMintCount] = useState(0);
-  const [wlMintLimit, setWlMintLimit] = useState(0);
-  const [publicMintLimit, setPublicMintLimit] = useState(0);
-  const [publicMintCount, setPubliMintCount] = useState(0);
-  const [modalIsOpen,setIsOpen] = useState(false);
-
-  const [isPublicMint, setIsPublicMint] = useState(false);
-  const [isWLMint, setIsWLMint] = useState(false);
-  const [wave, setWave] = useState(0);
-
-  const [wlMinted, setWLMinted] = useState(false);
-  const [publicMinted, setPublicMinted] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState(null);
   const mintState =  ["OG Mint", "PV1", "PV2", "Public Mint"];
+
+  //canvas
+  const mouth = [
+    {fileName: './image/01_mouth_A.png', ratio: 1.0},
+    {fileName: './image/01_mouth_B.png', ratio: 1.1},
+    {fileName: './image/01_mouth_C.png', ratio: 2.0},
+    {fileName: './image/01_mouth_D.png', ratio: 2.4},
+    {fileName: './image/01_mouth_E.png', ratio: 3.0},
+    {fileName: './image/01_mouth_F.png', ratio: 3.4},
+    {fileName: './image/01_mouth_G.png', ratio: 4.0},
+    {fileName: './image/01_mouth_H.png', ratio: 5.0},
+  ]
+
+  const hair = [
+    {fileName: './image/02_hair_A.png', ratio: 1.0},
+    {fileName: './image/02_hair_B.png', ratio: 1.1},
+    {fileName: './image/02_hair_C.png', ratio: 2.0},
+    {fileName: './image/02_hair_D.png', ratio: 2.8},
+    {fileName: './image/02_hair_E.png', ratio: 3.2},
+    {fileName: './image/02_hair_F.png', ratio: 3.4},
+    {fileName: './image/02_hair_G.png', ratio: 4.0},
+    {fileName: './image/02_hair_H.png', ratio: 5.0},
+    {fileName: './image/02_hair_I.png', ratio: 5.1},
+  ]
+
+  const eye = [
+    {fileName: './image/03_eye_A.png', ratio: 4.0},
+    {fileName: './image/03_eye_B.png', ratio: 4.1},
+    {fileName: './image/03_eye_C.png', ratio: 4.3},
+    {fileName: './image/03_eye_D.png', ratio: 4.5},
+    {fileName: './image/03_eye_E.png', ratio: 4.7},
+    {fileName: './image/03_eye_F.png', ratio: 5.0},
+    {fileName: './image/03_eye_G.png', ratio: 5.0},
+    {fileName: './image/03_eye_H.png', ratio: 5.0},
+    {fileName: './image/03_eye_I.png', ratio: 5.0},
+  ]
+
+  const fuku = [
+    {fileName: './image/04_fuku_A.png', ratio: 3.0},
+    {fileName: './image/04_fuku_B.png', ratio: 3.1},
+    {fileName: './image/04_fuku_C.png', ratio: 3.5},
+    {fileName: './image/04_fuku_D.png', ratio: 5.0},
+    {fileName: './image/04_fuku_E.png', ratio: 5.0},
+  ]
+
+  const moji = [
+    {fileName: './image/05_moji_A.png', ratio: 3.1},
+    {fileName: './image/05_moji_B.png', ratio: 3.2},
+    {fileName: './image/05_moji_C.png', ratio: 3.3},
+    {fileName: './image/05_moji_D.png', ratio: 4.1},
+    {fileName: './image/05_moji_E.png', ratio: 4.2},
+    {fileName: './image/05_moji_F.png', ratio: 4.3},
+    {fileName: './image/05_moji_G.png', ratio: 5.1},
+    {fileName: './image/05_moji_H.png', ratio: 5.2},
+    {fileName: './image/05_moji_I.png', ratio: 5.3},
+  ]
+  const width = 2084
+  const height = 2084
+  const [context,setContext] = useState(null)
+  const [loaded, setLoaded] = useState(false)
+  let imgList = []
+  let partsUrlList = [];
+  let loadedCounter = 0
+  const display = async() =>{
+    await Promise.all(imgList.map(async(item,index)=>{
+      await context.drawImage(item,0,0)
+    }))
+  }
+  const loadimage = async() => {
+    let imgObj = new Image()
+    imgObj.onload = async()=>{
+      loadedCounter++;
+      imgList.push(imgObj)
+      if(partsUrlList.length == loadedCounter){
+        await display()
+        partsUrlList = []
+        loadedCounter = 0
+        setLoaded(true)
+      }else{
+        await loadimage()
+      }
+    }
+    imgObj.src = partsUrlList[loadedCounter]
+  }
+  const genImage = async () => {
+    context.clearRect(0, 0, 150, 150);
+    if(context != null){
+      partsUrlList[0] = await lottery(moji)
+      partsUrlList[1] = await lottery(fuku)
+      partsUrlList[2] = await lottery(eye)
+      partsUrlList[3] = await lottery(hair)
+      partsUrlList[4] = await lottery(mouth)
+      await loadimage()
+    }
+  }
+
+  const lottery = async(a) => {
+    let totalRate = 0.0
+    let randomPoint = 0.0
+
+    const loopCount = a.length
+    let result;
+    for(let i = 0; i < loopCount; i++){
+      totalRate += a[i].ratio
+    }
+    randomPoint = Math.random() * totalRate
+    for(let i = 0; i < loopCount; i++){
+      if(randomPoint < a[i].ratio){
+        result = a[i].fileName
+        break
+      }
+      randomPoint -= a[i].ratio
+    }
+    return result
+  }
+
 
   const metamaskLogin = async (e) => {
     e.preventDefault();
@@ -97,7 +186,9 @@ function App() {
 
   useEffect(() => {
     //initOnchanged();
-    
+    const canvas = document.getElementById("canvas")
+    const context = canvas.getContext("2d")
+    setContext(context)
   },[]);
 
   useEffect( () => {
@@ -110,359 +201,24 @@ function App() {
   },[contract]);
   
   return (
-    <div className="App">
+    <div className='bg-gray-900'>
 
-      <MediaQuery query="(min-width: 768px)">
-      <header className="App-header">
-        
-        <div className='flex between'>
-          <img alt="icon" src={"/oumc.jpg"} className="logo"/>
-          <div style={{display: "table"}}>
-            <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "medium", color: "#cc3600"}}>SUMOU Oracle</div>
-          </div>
-        </div>
-
-       
-        
-      </header>
-      </MediaQuery>
-
-      <MediaQuery query="(max-width: 767px)">
-          <header className="mApp-header">
-            
-            <div className='flex between'>
-              <img alt="icon" src={"/oumc.jpg"} className="logo"/>
-              <div style={{display: "table"}}>
-                <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMOU Oracle</div>
-              </div>
-            </div>
-            
-          </header>
-
-          <div id="home" className='conte' style={{paddingTop: "11vh"}}>
-
-          <div style={{paddingLeft: "5%", width: "90%", height:"100%", alignItems: "center", display:"flex"}}>
-            <div style={{width:"100%"}}>
-              <div style={{textAlign:"left"}}>
-                <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#faebd7", marginBottom: "3px"}}>$OUMC</div>
-                <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMOU Oracle</div>
-                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumou, Japan's traditional national sport, throughout the world.</div>
-                <div className='flex between'>
-                  <div className='mitem'><span>uy Now</span></div>
-                  <div className='mitem'><span>Live Chart</span></div>
-                </div>
-                <div className='flex between'>
-                  <div className='mitem'><span>Telegram</span></div>
-                  <div className='mitem'><span>Twitter</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div id="about" className='mconteTow' style={{border: "none", marginTop:"-1px"}}>
-          <div className='mmidashi'>About Us</div>
-          <div className='mhonbun'>
-          Sumou is a traditional Japanese martial art in which big, fat men clash naked. They eat, sleep, and train repeatedly to build up their huge bodies.
-
-Their powerful fights are televised and very popular.
-As proof, there are countless "Sumou" competitions all over the world.
-
-Our goal is to promote sumou internationally. We have already partnered with several sports betting services, and for this reason we decided that it was necessary to have a reliable reference of sumou results on the blockchain.
-
-
-          </div>
-          <div className='mhonbun' style={{marginTop: "20px"}}>
-          Come on! Join us and bring the excitement of Sumou to the world!
-            <br/>Official Ca:<a href='https://www.google.com/' rel="noreferrer" target="_blank" style={{color:"white"}}>0x935...03904</a>
-          </div>
-        </div>
-
-        <div id="tokenomics" className='mconteTow' style={{border: "none", marginTop:"-1px"}}>
-          <div className='mmidashi'>Tokenomics</div>
-            <div style={{paddingLeft: "5%", width: "100%", height:"100%", alignItems: "center", display:"flex"}}>
-
-            <div>
-              
-              <div style={{width: "200px", marginBottom:"30px"}}>
-                <div style={{display: "flex"}}>
-                  <img alt="icon" src={"/tokeno01.png"} className="logo"/>
-                </div>
-                <div style={{textAlign: "left", fontSize: "x-large", color: "antiquewhite", fontWeight:"bold"}}>Buy Tax</div>
-                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>4% Total Buy Tax</div>
-              </div>
-
-              <div style={{width: "200px"}}>
-                <div style={{display: "flex"}}>
-                  <img alt="icon" src={"/tokeno02.png"} className="logo"/>
-                </div>
-                <div style={{textAlign: "left", fontSize: "x-large", color: "antiquewhite", fontWeight:"bold"}}>Sell Tax</div>
-                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>4% Total Sell Tax</div>
-              </div>
-
-            </div>
-
-
-              <div>
-
-                  <div style={{width: "200px", marginBottom:"30px"}}>
-                    <div style={{display: "flex"}}>
-                      <img alt="icon" src={"/tokeno03.png"} className="logo"/>
-                    </div>
-                    <div style={{textAlign: "left", fontSize: "x-large", color: "antiquewhite", fontWeight:"bold"}}>Total Supply</div>
-                    <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>1,000,000,000,000</div>
-                  </div>
-
-                  <div style={{width: "200px"}}>
-                    <div style={{display: "flex"}}>
-                      <img alt="icon" src={"/tokeno04.png"} className="logo"/>
-                    </div>
-                    <div style={{textAlign: "left", fontSize: "x-large", color: "antiquewhite", fontWeight:"bold"}}>Total Security</div>
-                    <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>100% Locked Liquidity</div>
-                  </div>
-
-              </div>
-
-          </div>
-        </div>
-
-        <div id="community" className='mconteTow' style={{border: "none", marginTop:"-1px"}}>
-        <div className='mmidashi'>Community</div>
-        <div className='mhonbun'>
-          A community you can trust. Here are all your like-minded people who, just like you, want to make the token successful and multiply their capital.
-        </div>
+      <div className='text-center bg-gray-900'>
+        <div className='bg-gray-900 h-full pt-4'>
+          <img src='koga_NFT_T02.png' className='inline-block w-12 mr-3'/>
+          <div className='text-gray-200 inline-block text-2xl font-bold'>Kog Residents</div>
+        </div> 
       </div>
-
-      <div id="marketing" className='mconteTow' style={{border: "none", paddingBottom: "100px", marginTop: "-1px"}}>
-        <div className='mmidashi'>Marketing</div>
-        <div className='mhonbun'>
-          The marketing is that the team chooses the most profitable strategy and already in the beginning more and more will be known about the token.
-        </div>
+      
+      <div className='min-h-screen bg-gray-900 text-center'>
+        <button className='text-gray-600 bg-gray-400 rounded px-2 mt-5 hover:bg-gray-600 hover:text-gray-400' 
+        onClick={async()=>{
+          genImage()
+        }}>Gen</button>
+        <canvas width="150" height="150" id="canvas"></canvas>
       </div>
-
-      <div className='mfooter' style={{marginTop: "-1px"}}>
-        <div style={{width: "100%", height:"100%"}}>
-
-          <div>
-            <div style={{width:"30%", marginRight:"auto", marginLeft:"auto", marginBottom: "30px", marginTop: "10px"}}>
-              <div className='flex between'>
-                <img alt="icon" src={"/oumc.jpg"} className="logo"/>
-                <div style={{display: "table"}}>
-                  <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMOU Oracle</div>
-                </div>
-              </div>
-            </div>
-
-              
-
-             
-
-              <div style={{textAlign: "center", color: "antiquewhite", marginBottom: "30px"}}>
-                <div style={{fontWeight: "bold", marginBottom: "10px"}}>Other Links</div>
-                <div className='footerLink' style={{cursor: "pointer"}}>Dextools</div>
-                <div className='footerLink' style={{cursor: "pointer"}}>BSCscan</div>
-              </div>
-
-              <div style={{textAlign: "center", color: "antiquewhite"}}>
-                <div style={{fontWeight: "bold", marginBottom: "10px"}}>Subscribe Us</div>
-                <div className='flex' style={{width:"30%", marginRight:"auto", marginLeft:"auto", paddingLeft: "10px", marginBottom: "20px"}}>
-                  <img alt="twitter" src={"/icons8-twitter-circled-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
-                  <img alt="telegram" src={"/icons8-telegram-app-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-      </MediaQuery>
-
-      <MediaQuery query="(min-width: 768px)">
-        <div id="home" className='conte' style={{backgroundImage: `url(${bg})`, backgroundSize: "cover", border: "none", backgroundPosition: "50% 25%", paddingTop: "20vh"}}>
-
-          <div style={{paddingLeft: "12%", width: "40%", height:"100%", alignItems: "center", display:"flex"}}>
-            <div style={{width:"100%"}}>
-              <div style={{textAlign:"left"}}>
-                <div style={{fontSize: "xxx-large", fontWeight: "bold", color: "#cc3600", marginBottom: "3px"}}>$OUMC</div>
-                <div style={{fontSize: "xx-large", fontWeight: "bold", marginBottom: "30px"}}>SUMOU Oracle</div>
-                <div style={{fontSize: "large", fontWeight: "revert", color: "#faebd7", marginBottom: "30px"}}>Our goal is to promote sumou, Japan's traditional national sport, throughout the world.</div>
-                <div className='flex between'>
-                  <div className='item'
-                    onClick={ async (event) =>{
-                            await metamaskLogin(event);
-                          }}><span>Buy Now</span></div>
-                  <div className='item'><span>Live Chart</span></div>
-                  <div className='item'><span>Telegram</span></div>
-                  <div className='item'><span>Twitter</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div id="about" className='conteTow' style={{border: "none"}}>
-          <div className='midashi'>OUMC NFT</div>
-          <div className='honbun'>
-          Buybacks will be made every 50Tx until 300Tx after the token sale begins.<br/>
-          50% of the repurchased tokens will be locked in a contract and distributed to OUMC NFT holders.<br/>
-          Distribution will begin after 300Tx has been executed or 48 hours after the start of the sale.<br/>
-          Details of the distribution start time will be announced separately.<br/>
-          Claims must be made during the specified time period. Contracts will be destroyed after the claimable period.
-          </div>
-          <div className='honbun' style={{marginTop: "20px"}}>
-            <br/>NFT Ca: 
-          </div>
-          <div style={{width:"20%", marginRight:"auto", marginLeft:"auto"}}>
-            <p style={{textAlign: "left", color:"#ffffff"}}>connect wallet: {shortAddress}</p>
-            <p style={{textAlign: "left", color:"#ffffff"}}>NFT balance: {NFTBalance}</p>
-            <p style={{textAlign: "left", color:"#ffffff"}}>total reward amount: 0000 $OUMC</p>
-            <p style={{textAlign: "left", color:"#ffffff"}}>reward per NFT: 000 $OUMC</p>
-            <p style={{textAlign: "left", color:"#ffffff"}}>price: FREE Mint</p>
-            
-            {defaultAccount == null ? (
-              <>
-                <div style={{width:"100%", backgroundColor: "#ffffff", paddingTop: "5px", paddingBottom:"5px", marginBottom:"10px"}}>total supply : -/200</div>
-                <div style={{marginRight:"auto", marginLeft:"auto"}}>
-                  <div className='citem'
-                    onClick={ async (event) =>{
-                            await metamaskLogin(event);
-                          }}><span>Connect</span></div>
-                </div>
-              </>
-            ):(
-              <>
-                <div style={{width:"100%", backgroundColor: "#ffffff", paddingTop: "5px", paddingBottom:"5px", marginBottom:"10px"}}>total supply :{200-supply}/200</div>
-                <div className='flex between'>
-                      <div className='item'
-                        onClick={ async (event) =>{
-                                await metamaskLogin(event);
-                              }}><span>Mint</span></div>
-                      <div className='item' style={{backgroundColor:"#696969"}}><span>Claim</span></div>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-
-        <div id="about" className='conteTow' style={{border: "none"}}>
-          <div className='midashi'>About Us</div>
-          <div className='honbun'>
-          Sumou is a traditional Japanese martial art in which big, fat men clash naked. They eat, sleep, and train repeatedly to build up their huge bodies.
-
-Their powerful fights are televised and very popular.
-As proof, there are countless "Sumou" competitions all over the world.
-
-Our goal is to promote sumou internationally. We have already partnered with several sports betting services, and for this reason we decided that it was necessary to have a reliable reference of sumou results on the blockchain.
-
-
-          </div>
-          <div className='honbun' style={{marginTop: "20px"}}>
-          Come on! Join us and bring the excitement of Sumou to the world!
-            <br/>Official Ca: 
-          </div>
-        </div>
-
-        
-
-        <div id="tokenomics" className='conteTow' style={{border: "none"}}>
-        <div className='midashi'>Tokenomics</div>
-        <div style={{paddingLeft: "12%", width: "100%", height:"100%", alignItems: "center", display:"flex"}}>
-
-          <div className='flex between'>
-          
-              <div style={{marginRight: "200px"}}>
-                <div style={{display: "flex"}}>
-                  <img alt="icon" src={"/tokeno01.png"} className="logo toke"/>
-                </div>
-                <div style={{textAlign: "left", fontSize: "x-large", color: "antiquewhite", fontWeight:"bold"}}>Buy Tax</div>
-                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>4% Total Buy Tax</div>
-              </div>
-
-              <div style={{marginRight: "200px"}}>
-                <div style={{display: "flex"}}>
-                  <img alt="icon" src={"/tokeno02.png"} className="logo toke"/>
-                </div>
-                <div style={{textAlign: "left", fontSize: "x-large", color: "antiquewhite", fontWeight:"bold"}}>Sell Tax</div>
-                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>4% Total Sell Tax</div>
-              </div>
-
-              <div style={{marginRight: "200px"}}>
-                <div style={{display: "flex"}}>
-                  <img alt="icon" src={"/tokeno03.png"} className="logo toke"/>
-                </div>
-                <div style={{textAlign: "left", fontSize: "x-large", color: "antiquewhite", fontWeight:"bold"}}>Total Supply</div>
-                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>1,000,000,000,000</div>
-              </div>
-
-              <div style={{marginRight: "200px"}}>
-                <div style={{display: "flex"}}>
-                  <img alt="icon" src={"/tokeno04.png"} className="logo toke"/>
-                </div>
-                <div style={{textAlign: "left", fontSize: "x-large", color: "antiquewhite", fontWeight:"bold"}}>Total Security</div>
-                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>100% Locked Liquidity</div>
-              </div>
-
-          </div>
-
-        </div>
-      </div>
-
-      <div id="community" className='conteTow' style={{border: "none"}}>
-        <div className='midashi'>Community</div>
-        <div className='honbun'>
-          A community you can trust. Here are all your like-minded people who, just like you, want to make the token successful and multiply their capital.
-        </div>
-      </div>
-
-      <div id="marketing" className='conteTow' style={{border: "none", paddingBottom: "100px", marginTop: "-1px"}}>
-        <div className='midashi'>Marketing</div>
-        <div className='honbun'>
-          The marketing is that the team chooses the most profitable strategy and already in the beginning more and more will be known about the token.
-        </div>
-      </div>
-
-      <div className='footer' style={{marginTop: "-1px"}}>
-        <div style={{paddingLeft: "12%", width: "100%", height:"100%", alignItems: "center", display:"flex"}}>
-          <div className='flex between'>
-          
-              <div style={{marginRight: "150px"}}>
-                <div style={{display: "flex"}}>
-                  <img alt="icon" src={"/oumc.jpg"} className="logo"/>
-                  <div style={{display: "table"}}>
-                    <div style={{verticalAlign: "middle", display: "table-cell", fontWeight: "bold", color: "#cc3600"}}>SUMOU Oracle</div>
-                  </div>
-                </div>
-                <div style={{textAlign: "left", fontSize: "small", color: "antiquewhite"}}>Our goal is to promote sumou, <br/>Japan's traditional national sport, <br/>throughout the world.</div>
-              </div>
-              
-
-              <div style={{textAlign: "left", color: "antiquewhite",marginRight: "200px"}}>
-                <div style={{fontWeight: "bold", marginBottom: "10px"}}>Other Links</div>
-                <div className='footerLink' style={{cursor: "pointer"}}>Dextools</div>
-                <div className='footerLink' style={{cursor: "pointer"}}>BSCscan</div>
-              </div>
-
-              <div style={{textAlign: "left", color: "antiquewhite",marginRight: "200px"}}>
-                <div style={{fontWeight: "bold", marginBottom: "10px"}}>Subscribe Us</div>
-                <div className='flex between'>
-                  <img alt="twitter" src={"/icons8-twitter-circled-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
-                  <img alt="telegram" src={"/icons8-telegram-app-48.png"} className="subscribe" style={{cursor: "pointer"}}/>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      </MediaQuery>
-
-
-
-
-
-
-
-
-
+      
+     
       
 
     </div>
