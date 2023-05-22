@@ -206,7 +206,7 @@ function App() {
       <div className='text-center bg-gray-900'>
         <div className='bg-gray-900 h-full pt-4'>
           <img src='koga_NFT_T02.png' className='inline-block w-12 mr-3'/>
-          <div className='text-gray-200 inline-block text-2xl font-bold'>Kog Residents</div>
+          <div className='text-gray-200 inline-block text-2xl font-bold'>WA-SHOCK</div>
         </div> 
       </div>
       
