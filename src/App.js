@@ -201,7 +201,7 @@ function App() {
   },[contract]);
   
   return (
-    <div className='bg-gray-900'>
+    <div style={{width: "100%", textAlign: "center"}}>
 
       <div className='text-center bg-gray-900'>
         <div className='bg-gray-900 h-full pt-4'>
