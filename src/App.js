@@ -224,7 +224,7 @@ function App() {
         ):(
           <button className='text-gray-600 bg-gray-400 rounded px-2 mt-5 hover:bg-gray-600 hover:text-gray-400' 
           onClick={async()=>{
-            genImage()
+            metamaskLogin()
           }}>connect</button>
         )}
         <canvas width="150" height="150" id="canvas"></canvas>
