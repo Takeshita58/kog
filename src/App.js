@@ -70,8 +70,7 @@ function App() {
     {fileName: './image/05_moji_H.png', ratio: 5.2},
     {fileName: './image/05_moji_I.png', ratio: 5.3},
   ]
-  const width = 2084
-  const height = 2084
+
   const [context,setContext] = useState(null)
   const [loaded, setLoaded] = useState(false)
   let imgList = []
@@ -82,6 +81,7 @@ function App() {
       await context.drawImage(item,0,0)
     }))
   }
+
   const loadimage = async() => {
     let imgObj = new Image()
     imgObj.onload = async()=>{
@@ -98,6 +98,7 @@ function App() {
     }
     imgObj.src = partsUrlList[loadedCounter]
   }
+
   const genImage = async () => {
     context.clearRect(0, 0, 150, 150);
     if(context != null){
@@ -142,7 +143,7 @@ function App() {
         const web3 = new Web3(window.ethereum);
         let chainID = await web3.eth.net.getId();
         console.log(chainID)
-              if(chainID == 56){
+              if(chainID == 97){
                   let account = (await web3.eth.getAccounts())[0];
                   
                   setShortAddress(account.substr(0, 5) + "..." + account.substr(-4, 4));
@@ -153,7 +154,7 @@ function App() {
                 try{
                   await window.ethereum.request({
                     method: 'wallet_switchEthereumChain',
-                    params: [{ chainId: '0x38' }], // chainId must be in hexadecimal numbers
+                    params: [{ chainId: '0x61' }], // chainId must be in hexadecimal numbers
                   })
                 }catch(error){
                   setWaiting(false);
@@ -215,6 +216,17 @@ function App() {
         onClick={async()=>{
           genImage()
         }}>Gen</button>
+        {contract ? (
+          <button className='text-gray-600 bg-gray-400 rounded px-2 mt-5 hover:bg-gray-600 hover:text-gray-400' 
+              onClick={async()=>{
+                  genImage()
+          }}>mint</button>
+        ):(
+          <button className='text-gray-600 bg-gray-400 rounded px-2 mt-5 hover:bg-gray-600 hover:text-gray-400' 
+          onClick={async()=>{
+            genImage()
+          }}>connect</button>
+        )}
         <canvas width="150" height="150" id="canvas"></canvas>
       </div>
       
