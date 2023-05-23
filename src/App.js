@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react'
 import Web3 from 'web3'
-import washock_ABI from '../public/washocknft_abi.json'
 import { createCanvas,loadImage } from 'canvas';
 import ReactDOM from "react-dom"
 
@@ -16,6 +15,61 @@ function App() {
   const [errorMessage, setErrorMessage] = useState(null);
   const mintState =  ["OG Mint", "PV1", "PV2", "Public Mint"];
   const nftAddr = "0x05A6942FE2Bf4BA52a15D3b9BE53F84E0F14e3D8"
+  const washock_ABI = [
+    {
+        "inputs": [],
+        "name": "getPause",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getWlPause",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "mintToken",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "wlMint",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]
 
   //canvas
   const mouth = [
