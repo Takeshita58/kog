@@ -273,12 +273,12 @@ function App() {
           genImage()
         }}>Gen</button>
         {contract ? (
-          <button className='text-gray-600 bg-gray-400 rounded px-2 mt-5 hover:bg-gray-600 hover:text-gray-400' 
+          <button style={{display:"block"}} 
               onClick={async()=>{
                   genImage()
           }}>Mint</button>
         ):(
-          <button className='text-gray-600 bg-gray-400 rounded px-2 mt-5 hover:bg-gray-600 hover:text-gray-400' 
+          <button  style={{display:"block"}} 
           onClick={async(event)=>{
             metamaskLogin(event)
           }}>Connect</button>
