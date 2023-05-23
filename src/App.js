@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import Web3 from 'web3'
+import washock_ABI from '../public/washocknft_abi.json'
 import { createCanvas,loadImage } from 'canvas';
 import ReactDOM from "react-dom"
 
@@ -14,6 +15,7 @@ function App() {
   const [waiting, setWaiting] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const mintState =  ["OG Mint", "PV1", "PV2", "Public Mint"];
+  const nftAddr = "0x05A6942FE2Bf4BA52a15D3b9BE53F84E0F14e3D8"
 
   //canvas
   const mouth = [
@@ -148,8 +150,8 @@ function App() {
                   
                   setShortAddress(account.substr(0, 5) + "..." + account.substr(-4, 4));
                   accountChangeHandlerM(account);
-                  //const _NFTContract = new web3.eth.Contract(voxvotNFT_abi, NFTContractAddress);
-                  //setContract(_NFTContract);
+                  const _NFTContract = new web3.eth.Contract(washock_ABI, nftAddr);
+                  setContract(_NFTContract);
               } else {
                 try{
                   await window.ethereum.request({
