@@ -267,7 +267,7 @@ function App() {
         </div> 
       </div>
       
-      <div className='min-h-screen bg-gray-900 text-center'>
+      <div style={{marginLeft:"auto", marginRight:"auto"}}>
         <button style={{display:"block"}} 
         onClick={async()=>{
           genImage()
