@@ -260,36 +260,33 @@ function App() {
   return (
     <div style={{width: "100%", textAlign: "center"}}>
 
-      <div className='text-center bg-gray-900'>
-        <div className='bg-gray-900 h-full pt-4'>
-          <img src='koga_NFT_T02.png' className='inline-block w-12 mr-3'/>
-          <div className='text-gray-200 inline-block text-2xl font-bold'>WA-SHOCK</div>
-        </div> 
-      </div>
-      
-      <div style={{justifyContent:'center'}}>
-        <button style={{display:"block"}} 
-        onClick={async()=>{
-          genImage()
-        }}>Gen</button>
-        {contract ? (
-          <button style={{display:"block"}} 
-              onClick={async()=>{
-                  genImage()
-          }}>Mint</button>
-        ):(
-          <button  style={{display:"block"}} 
-          onClick={async(event)=>{
-            metamaskLogin(event)
-          }}>Connect</button>
-        )} 
-        <canvas width="150" height="150" id="canvas"></canvas>
-      </div>
-      
-     
-      
-
+    <div>
+      <div>
+        <img src='koga_NFT_T02.png'/>
+        <div>WA-SHOCK</div>
+      </div> 
     </div>
+
+    <div style={{justifyContent:'center'}}>
+      <button style={{display:"block"}} 
+      onClick={async()=>{
+        genImage()
+      }}>Gen</button>
+      {contract ? (
+        <button style={{display:"block"}} 
+            onClick={async()=>{
+                genImage()
+        }}>Mint</button>
+      ):(
+        <button  style={{display:"block"}} 
+        onClick={async(event)=>{
+          metamaskLogin(event)
+        }}>Connect</button>
+      )} 
+      <canvas width="150" height="150" id="canvas"></canvas>
+    </div>
+
+</div>
   );
 }
 
