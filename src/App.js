@@ -268,7 +268,7 @@ function App() {
       </div>
       
       <div className='min-h-screen bg-gray-900 text-center'>
-        <button className='text-gray-600 bg-gray-400 rounded px-2 mt-5 hover:bg-gray-600 hover:text-gray-400' 
+        <button style={{display:"block"}} 
         onClick={async()=>{
           genImage()
         }}>Gen</button>
