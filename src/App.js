@@ -267,7 +267,7 @@ function App() {
         </div> 
       </div>
       
-      <div style={{marginLeft:"auto", marginRight:"auto"}}>
+      <div style={{justifyContent:'center'}}>
         <button style={{display:"block"}} 
         onClick={async()=>{
           genImage()
