@@ -260,11 +260,13 @@ function App() {
   return (
     <div style={{backgroundColor:"black", minHeight:"100vh", width:"100%"}}>
 
-      <div>
-        <div>
-          <img src='koga_NFT_T02.png'/>
-          <div>WA-SHOCK</div>
-        </div> 
+      <div style={{textAlign:"center", marginBottom: "10px", backgroundColor:"#f5f5f5", paddingTop:"5px", paddingBottom:"10px"}}>
+          <div style={{margin:"auto"}}>
+              <img style={{width: "7vh", display:"inline-block", marginTop:"-10px"}} src='koga_NFT_T02.png'/>
+              <div style={{color:"black", fontSize:"30px", fontWeight:"bold", display:"inline-block", marginLeft:"5px", paddingTop:"5px"}}>
+                <p>WA-SHOCK</p>
+              </div>
+          </div>
       </div>
 
       <div style={{justifyContent:'center'}}>
