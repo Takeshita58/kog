@@ -268,23 +268,26 @@ function App() {
           </div>
       </div>
 
-      <div style={{justifyContent:'center'}}>
-        <button style={{display:"block"}} 
-        onClick={async()=>{
-          genImage()
-        }}>Gen</button>
-        {contract ? (
-          <button style={{display:"block"}} 
-              onClick={async()=>{
-                  genImage()
-          }}>Mint</button>
-        ):(
-          <button  style={{display:"block"}} 
-          onClick={async(event)=>{
-            metamaskLogin(event)
-          }}>Connect</button>
-        )} 
-        <canvas width="150" height="150" id="canvas"></canvas>
+      <div style={{margin:"auto"}}>
+      <div style={{textAlign:"center"}}>
+            {shortAddress == null ? (<div style={{color:"white"}}>please connect metamask wallet</div>):(<div style={{color:"white"}}><span style={{color:"white"}}>Connected Wallet Address: </span>{shortAddress}</div>)}
+            {contract ? (
+              <button style={{color:"white", backgroundColor:"#808080", borderRadius:"2px"}}
+                  onClick={async()=>{
+                      genImage()
+              }}>Mint</button>
+            ):(
+              <button  style={{color:"white", backgroundColor:"#808080", borderRadius:"2px", paddingRight:"4px", paddingLeft:"3px"}} 
+              onClick={async(event)=>{
+                metamaskLogin(event)
+              }}>Connect</button>
+            )} 
+            <canvas style={{margin:"auto", marginTop:"10px"}} width="150" height="150" id="canvas"></canvas>
+            <button style={{color:"white", backgroundColor:"#808080", borderRadius:"2px", marginBottom:"10px",paddingRight:"4px", paddingLeft:"3px", display:"block", margin:"auto"}} 
+            onClick={async()=>{
+              genImage()
+            }}>Gen</button>
+          </div>
       </div>
 
 </div>
