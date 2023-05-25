@@ -263,7 +263,7 @@ function App() {
 
 
       <div style={{margin:"auto"}}>
-          <div style={{textAlign:"center",fontSize:"0px"}}>
+          <div style={{textAlign:"center",fontSize:"0"}}>
                 <p style={{color:"white", fontSize:"50px", fontWeight:"bold" ,marginLeft:"5px"}}>WA-SHOCK</p>
           </div>
           <div>
