@@ -270,7 +270,7 @@ function App() {
 
       <div style={{margin:"auto"}}>
           <div>
-            <p style={{color:"white"}}>WA-SHOCK is a collection of 500 pfpNFTs generated in the image of the Japanese food-loving residents of the WA-SHOCK Apartments.</p>
+            <p style={{color:"white", textAlign:"center"}}>WA-SHOCK is a collection of 500 pfpNFTs generated in the image of <br/>the Japanese food-loving residents of the WA-SHOCK Apartments.</p>
           </div>
           <div style={{textAlign:"center"}}>
             {shortAddress == null ? (<div style={{color:"white"}}>please connect metamask wallet</div>):(<div style={{color:"white"}}><span style={{color:"white"}}>Connected Wallet Address: </span>{shortAddress}</div>)}
