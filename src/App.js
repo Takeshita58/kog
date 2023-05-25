@@ -262,14 +262,17 @@ function App() {
 
       <div style={{textAlign:"center", backgroundColor:"#f5f5f5", justifyContent:"center"}}>
           <div style={{margin:"auto"}}>
-              <div style={{color:"black", fontSize:"30px", fontWeight:"bold", display:"inline-block", marginLeft:"5px"}}>
+              <div style={{color:"#1a1a1a", fontSize:"30px", fontWeight:"bold", display:"inline-block", marginLeft:"5px"}}>
                 <p>WA-SHOCK</p>
               </div>
           </div>
       </div>
 
       <div style={{margin:"auto"}}>
-      <div style={{textAlign:"center"}}>
+          <div>
+            <p style={{color:"white"}}>WA-SHOCK is a collection of 500 pfpNFTs generated in the image of the Japanese food-loving residents of the WA-SHOCK Apartments.</p>
+          </div>
+          <div style={{textAlign:"center"}}>
             {shortAddress == null ? (<div style={{color:"white"}}>please connect metamask wallet</div>):(<div style={{color:"white"}}><span style={{color:"white"}}>Connected Wallet Address: </span>{shortAddress}</div>)}
             {contract ? (
               <div style={{textAlign:"center"}}>
