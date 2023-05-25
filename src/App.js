@@ -264,9 +264,7 @@ function App() {
 
       <div style={{margin:"auto"}}>
           <div style={{textAlign:"center"}}>
-              <div>
                 <p style={{color:"white", fontSize:"50px", fontWeight:"bold" ,marginLeft:"5px"}}>WA-SHOCK</p>
-              </div>
           </div>
           <div>
             <p style={{color:"white", textAlign:"center"}}>WA-SHOCK is a collection of 500 pfpNFTs generated in the image of <br/>the Japanese food-loving residents of the WA-SHOCK Apartments.</p>
