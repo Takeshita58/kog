@@ -258,33 +258,33 @@ function App() {
   },[contract]);
   
   return (
-    <div style={{width: "100%", textAlign: "center"}}>
+    <div style={{backgroundColor:"black", minHeight:"100vh", width:"100%"}}>
 
-    <div>
       <div>
-        <img src='koga_NFT_T02.png'/>
-        <div>WA-SHOCK</div>
-      </div> 
-    </div>
+        <div>
+          <img src='koga_NFT_T02.png'/>
+          <div>WA-SHOCK</div>
+        </div> 
+      </div>
 
-    <div style={{justifyContent:'center'}}>
-      <button style={{display:"block"}} 
-      onClick={async()=>{
-        genImage()
-      }}>Gen</button>
-      {contract ? (
+      <div style={{justifyContent:'center'}}>
         <button style={{display:"block"}} 
-            onClick={async()=>{
-                genImage()
-        }}>Mint</button>
-      ):(
-        <button  style={{display:"block"}} 
-        onClick={async(event)=>{
-          metamaskLogin(event)
-        }}>Connect</button>
-      )} 
-      <canvas width="150" height="150" id="canvas"></canvas>
-    </div>
+        onClick={async()=>{
+          genImage()
+        }}>Gen</button>
+        {contract ? (
+          <button style={{display:"block"}} 
+              onClick={async()=>{
+                  genImage()
+          }}>Mint</button>
+        ):(
+          <button  style={{display:"block"}} 
+          onClick={async(event)=>{
+            metamaskLogin(event)
+          }}>Connect</button>
+        )} 
+        <canvas width="150" height="150" id="canvas"></canvas>
+      </div>
 
 </div>
   );
