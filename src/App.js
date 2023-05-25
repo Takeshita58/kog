@@ -277,7 +277,7 @@ function App() {
                       genImage()
               }}>Mint</button>
             ):(
-              <button  style={{color:"white", backgroundColor:"#808080", borderRadius:"2px", paddingRight:"4px", paddingLeft:"3px"}} 
+              <button  style={{color:"white", backgroundColor:"#808080", borderRadius:"2px", paddingRight:"4px", paddingLeft:"3px", display:"block"}} 
               onClick={async(event)=>{
                 metamaskLogin(event)
               }}>Connect</button>
