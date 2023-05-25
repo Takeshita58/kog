@@ -258,7 +258,7 @@ function App() {
   },[contract]);
   
   return (
-    <div style={{backgroundColor:"black", minHeight:"100vh", width:"100%"}}>
+    <div style={{backgroundColor:"#1a1a1a", minHeight:"100vh", width:"100%"}}>
 
       <div style={{textAlign:"center", backgroundColor:"#f5f5f5", justifyContent:"center"}}>
           <div style={{margin:"auto"}}>
