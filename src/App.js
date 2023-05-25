@@ -262,8 +262,8 @@ function App() {
 
       <div style={{textAlign:"center", marginBottom: "10px", backgroundColor:"#f5f5f5", paddingTop:"5px", paddingBottom:"10px"}}>
           <div style={{margin:"auto"}}>
-              <img style={{width: "7vh", display:"inline-block", marginTop:"-10px"}} src='koga_NFT_T02.png'/>
-              <div style={{color:"black", fontSize:"30px", fontWeight:"bold", display:"inline-block", marginLeft:"5px", paddingTop:"5px"}}>
+              <img style={{width: "7vh", display:"inline-block"}} src='koga_NFT_T02.png'/>
+              <div style={{color:"black", fontSize:"30px", fontWeight:"bold", display:"inline-block", marginLeft:"5px"}}>
                 <p>WA-SHOCK</p>
               </div>
           </div>
