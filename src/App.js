@@ -260,9 +260,7 @@ function App() {
   return (
     <div style={{backgroundColor:"#1a1a1a", minHeight:"100vh", width:"100%"}}>
 
-      <div style={{textAlign:"center", backgroundColor:"#f5f5f5", justifyContent:"center"}}>
-          
-      </div>
+
 
       <div style={{margin:"auto"}}>
           <div style={{textAlign:"center"}}>
