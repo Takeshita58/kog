@@ -262,7 +262,7 @@ function App() {
 
       <div style={{textAlign:"center", backgroundColor:"#f5f5f5"}}>
           <div style={{margin:"auto"}}>
-              <img style={{width: "7vh", display:"inline-block"}} src='koga_NFT_T02.png'/>
+              <img style={{width: "7vh", display:"inline-block", marginTop:"10px"}} src='koga_NFT_T02.png'/>
               <div style={{color:"black", fontSize:"30px", fontWeight:"bold", display:"inline-block", marginLeft:"5px"}}>
                 <p>WA-SHOCK</p>
               </div>
