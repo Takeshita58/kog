@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import Web3 from 'web3'
+import washock_ABI from '../src/washocknft_abi.json'
 import { createCanvas,loadImage } from 'canvas';
 import ReactDOM from "react-dom"
 
@@ -15,61 +16,6 @@ function App() {
   const [errorMessage, setErrorMessage] = useState(null);
   const mintState =  ["OG Mint", "PV1", "PV2", "Public Mint"];
   const nftAddr = "0x05A6942FE2Bf4BA52a15D3b9BE53F84E0F14e3D8"
-  const washock_ABI = [
-    {
-        "inputs": [],
-        "name": "getPause",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "getWlPause",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "mintToken",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "totalSupply",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "wlMint",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }
-]
 
   //canvas
   const mouth = [
@@ -126,7 +72,6 @@ function App() {
     {fileName: './image/05_moji_H.png', ratio: 5.2},
     {fileName: './image/05_moji_I.png', ratio: 5.3},
   ]
-
   const [context,setContext] = useState(null)
   const [loaded, setLoaded] = useState(false)
   let imgList = []
@@ -258,35 +203,41 @@ function App() {
   },[contract]);
   
   return (
-    <div style={{width: "100%", textAlign: "center"}}>
+    <div style={{backgroundColor:"black", minHeight:"100vh", width:"100%"}}>
 
-    <div>
-      <div>
-        <img src='koga_NFT_T02.png'/>
-        <div>WA-SHOCK</div>
-      </div> 
-    </div>
+        <div style={{textAlign:"center", marginBottom: "10px", backgroundColor:"#f5f5f5", paddingTop:"5px", paddingBottom:"10px"}}>
+            <div style={{margin:"auto"}}>
+              <img style={{width: "7vh", display:"inline-block", marginTop:"-10px"}} src='koga_NFT_T02.png'/>
+              <div style={{color:"black", fontSize:"30px", fontWeight:"bold", display:"inline-block", marginLeft:"5px", paddingTop:"5px"}}>
+                <p>WA-SHOCK</p>
+              </div>
+            </div>
+        </div>
 
-    <div style={{justifyContent:'center'}}>
-      <button style={{display:"block"}} 
-      onClick={async()=>{
-        genImage()
-      }}>Gen</button>
-      {contract ? (
-        <button style={{display:"block"}} 
+        <div style={{margin:"auto"}}>
+          <div style={{textAlign:"center"}}>
+            {shortAddress == null ? (<div style={{color:"white"}}>please connect metamask wallet</div>):(<div style={{color:"white"}}><span style={{color:"white"}}>Connected Wallet Address: </span>{shortAddress}</div>)}
+            {contract ? (
+              <button style={{color:"white", backgroundColor:"#808080", borderRadius:"2px"}}
+                  onClick={async()=>{
+                      genImage()
+              }}>Mint</button>
+            ):(
+              <button  style={{color:"white", backgroundColor:"#808080", borderRadius:"2px", paddingRight:"4px", paddingLeft:"3px"}} 
+              onClick={async(event)=>{
+                metamaskLogin(event)
+              }}>Connect</button>
+            )} 
+            <canvas style={{margin:"auto", marginTop:"10px"}} width="150" height="150" id="canvas"></canvas>
+            <button style={{color:"white", backgroundColor:"#808080", borderRadius:"2px", marginBottom:"10px",paddingRight:"4px", paddingLeft:"3px", display:"block", margin:"auto"}} 
             onClick={async()=>{
-                genImage()
-        }}>Mint</button>
-      ):(
-        <button  style={{display:"block"}} 
-        onClick={async(event)=>{
-          metamaskLogin(event)
-        }}>Connect</button>
-      )} 
-      <canvas width="150" height="150" id="canvas"></canvas>
-    </div>
+              genImage()
+            }}>Gen</button>
+          </div>
+          
+        </div>
 
-</div>
+    </div>
   );
 }
 
