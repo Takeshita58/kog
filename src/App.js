@@ -16,6 +16,8 @@ function App() {
   const [errorMessage, setErrorMessage] = useState(null);
   const mintState =  ["OG Mint", "PV1", "PV2", "Public Mint"];
   const nftAddr = "0x05A6942FE2Bf4BA52a15D3b9BE53F84E0F14e3D8"
+  const [txHash, setTxHash] = useState(null)
+  const [txURL, setTxURL] = useState(null)
   const washock_ABI = [
     {
         "inputs": [],
@@ -251,6 +253,37 @@ function App() {
     setSupply(_supply)
   }
 
+  const mint = async () => {
+    setWaiting(true)
+    const web3 = new Web3(window.ethereum);
+    const _NFTContract = new web3.eth.Contract(washock_ABI, nftAddr);
+
+    const estimategas = await _NFTContract.methods.mintToken().estimateGas(
+      {
+          from: defaultAccount,
+          
+      }, function(error, estimatedGas) {
+        //console.log("estimategas: ",estimatedGas)
+      }
+    )
+
+    await _NFTContract.methods.mintToken().send({
+      from: defaultAccount,
+      gasLimit: estimategas.toString()
+    }).then(async (receipt) => {
+      response = receipt.transactionHash;
+    }).catch((error) => {
+      response = error;
+      //console.log(error);
+    });
+    
+
+    setWaiting(false)
+    setTxHash(response)
+    setTxURL("https://testnet.bscscan.com/tx/"+response)
+
+  }
+
   useEffect(() => {
     //initOnchanged();
     (async () => {
@@ -286,13 +319,18 @@ function App() {
           </div>
           <div style={{textAlign:"center"}}>
             {shortAddress == null ? (<div style={{color:"white"}}>please connect metamask wallet</div>):(<div style={{color:"white"}}><span style={{color:"white"}}>Connected Wallet Address: </span>{shortAddress}</div>)}
-            <div>{100 - supply} / 100</div>
+            <div style={{color:"white"}}>{100 - supply} / 100</div>
             {contract ? (
               <div style={{textAlign:"center", padding:"5px"}}>
-                <button style={{color:"white", backgroundColor:"#808080", borderRadius:"2px"}}
-                    onClick={async()=>{
-                        genImage()
-                }}>Mint</button>
+                {waiting ? (
+                  <>waiting...</>
+                ):(
+                                  <button style={{color:"white", backgroundColor:"#808080", borderRadius:"2px"}}
+                                  onClick={async()=>{
+                                    mint()
+                              }}>Mint</button>
+                )}
+                <div><a href={txURL} target="_blank" rel="noreferrer">{txHash.substr(0, 5) + "..." + txHash.substr(-4, 4)}</a></div>
               </div>
             ):(
               <div style={{textAlign:"center", padding:"5px"}}>
