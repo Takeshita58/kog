@@ -246,11 +246,9 @@ function App() {
 
   const getSupply = async() => {
     const web3 = new Web3(process.env.NEXT_PUBLIC_ENDPOINT);
-    const privateKey = process.env.NEXT_PUBLIC_PRIVATE_KEY;
-    web3.eth.accounts.wallet.add(privateKey);
-    const nftContract = new web3.eth.Contract(washock_ABI, nftAddr);
-    const _supply = await nftContract.methods.totalSupply().call
-    setSupply(_supply)
+    const cont = new web3.eth.Contract(washock_ABI,nftAddr)
+    const response = await cont.methods.totalSupply().call()
+    setSupply(response)
   }
 
   const mint = async () => {
