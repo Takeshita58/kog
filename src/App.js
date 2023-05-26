@@ -254,6 +254,7 @@ function App() {
   }
 
   const mint = async () => {
+    let response;
     setWaiting(true)
     const web3 = new Web3(window.ethereum);
     const _NFTContract = new web3.eth.Contract(washock_ABI, nftAddr);
