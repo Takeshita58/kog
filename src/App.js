@@ -332,7 +332,11 @@ function App() {
                   onClick={async()=>{
                       mint()
                 }}>Mint</button>
-                <div><a href={txURL} target="_blank" rel="noreferrer">{txHash.substr(0, 5) + "..." + txHash.substr(-4, 4)}</a></div>
+                {txHash == null ? (
+                  null
+                ):(
+                  <div><a href={txURL} target="_blank" rel="noreferrer">{txHash.substr(0, 5) + "..." + txHash.substr(-4, 4)}</a></div>
+                )}
               </div>
             ):(
               <div style={{textAlign:"center", padding:"5px"}}>
