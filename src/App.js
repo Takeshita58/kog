@@ -11,6 +11,7 @@ function App() {
   const [connect, setConnect] = useState(false);
   const [defaultAccount, setDefaiultAccount] = useState(null);
   const [contract, setContract] = useState(null);
+  const [supply, setSupply] = useState(null)
   const [waiting, setWaiting] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const mintState =  ["OG Mint", "PV1", "PV2", "Public Mint"];
@@ -241,8 +242,21 @@ function App() {
     setDefaiultAccount(newAddress);
   }
 
+  const getSupply = async() => {
+    const web3 = new Web3(process.env.NEXT_PUBLIC_ENDPOINT);
+    const privateKey = process.env.NEXT_PUBLIC_PRIVATE_KEY;
+    web3.eth.accounts.wallet.add(privateKey);
+    const nftContract = new web3.eth.Contract(washock_ABI, nftAddr);
+    const _supply = await nftContract.methods.totalSupply().call
+    setSupply(_supply)
+  }
+
   useEffect(() => {
     //initOnchanged();
+    (async () => {
+      await getSupply()
+    })()
+    
     const canvas = document.getElementById("canvas")
     const context = canvas.getContext("2d")
     setContext(context)
@@ -260,8 +274,6 @@ function App() {
   return (
     <div style={{backgroundColor:"#1a1a1a", minHeight:"100vh", width:"100%"}}>
 
-
-
       <div style={{margin:"auto"}}>
           <div style={{textAlign:"center",fontSize:"0", margin:"0", padding:"0"}}>
                 <div style={{color:"white", fontSize:"50px", fontWeight:"bold", padding:"0"}}>WA-SHOCK</div>
@@ -274,6 +286,7 @@ function App() {
           </div>
           <div style={{textAlign:"center"}}>
             {shortAddress == null ? (<div style={{color:"white"}}>please connect metamask wallet</div>):(<div style={{color:"white"}}><span style={{color:"white"}}>Connected Wallet Address: </span>{shortAddress}</div>)}
+            <div>{100 - supply} / 100</div>
             {contract ? (
               <div style={{textAlign:"center", padding:"5px"}}>
                 <button style={{color:"white", backgroundColor:"#808080", borderRadius:"2px"}}
@@ -297,7 +310,7 @@ function App() {
           </div>
       </div>
 
-</div>
+    </div>
   );
 }
 
