@@ -325,11 +325,12 @@ function App() {
                 {waiting ? (
                   <>waiting...</>
                 ):(
-                                  <button style={{color:"white", backgroundColor:"#808080", borderRadius:"2px"}}
-                                  onClick={async()=>{
-                                    mint()
-                              }}>Mint</button>
+                  null
                 )}
+                <button style={{color:"white", backgroundColor:"#808080", borderRadius:"2px"}}
+                  onClick={async()=>{
+                      mint()
+                }}>Mint</button>
                 <div><a href={txURL} target="_blank" rel="noreferrer">{txHash.substr(0, 5) + "..." + txHash.substr(-4, 4)}</a></div>
               </div>
             ):(
