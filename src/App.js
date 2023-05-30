@@ -245,11 +245,7 @@ function App() {
   }
 
   const getSupply = async() => {
-    console.log("test2")
-    const web3 = new Web3(process.env.ENDPOINT);
-    console.log(process.env.ENDPOINT)
-    const cont = new web3.eth.Contract(washock_ABI,nftAddr)
-    const response = await cont.methods.totalSupply().call()
+    const response = await contract.methods.totalSupply().call()
     setSupply(response)
   }
 
@@ -288,7 +284,7 @@ function App() {
   useEffect(() => {
     //initOnchanged();
     (async () => {
-      await getSupply()
+      
     })()
     
     const canvas = document.getElementById("canvas")
@@ -299,6 +295,7 @@ function App() {
   useEffect( () => {
     if(contract != null){
       (async () => {
+        await getSupply()
         setConnect(true);
         setWaiting(false);
       })();
@@ -320,7 +317,7 @@ function App() {
           </div>
           <div style={{textAlign:"center"}}>
             {shortAddress == null ? (<div style={{color:"white"}}>please connect metamask wallet</div>):(<div style={{color:"white"}}><span style={{color:"white"}}>Connected Wallet Address: </span>{shortAddress}</div>)}
-            <div style={{color:"white"}}>{100 - supply} / 100</div>
+            <div style={{color:"white"}}>{supply == null ? ("-"): (<>{supply}</>)} / 100</div>
             {contract ? (
               <div style={{textAlign:"center", padding:"5px"}}>
                 {waiting ? (
