@@ -245,8 +245,8 @@ function App() {
   }
 
   const getSupply = async() => {
-    const web3 = new Web3(process.env.NEXT_PUBLIC_ENDPOINT);
-    console.log(process.env.NEXT_PUBLIC_ENDPOINT)
+    const web3 = new Web3(process.env.ENDPOINT);
+    console.log(process.env.ENDPOINT)
     const cont = new web3.eth.Contract(washock_ABI,nftAddr)
     const response = await cont.methods.totalSupply().call()
     setSupply(response)
