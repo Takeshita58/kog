@@ -342,7 +342,12 @@ function App() {
                   metamaskLogin(event)
                 }}>Connect</button>
               </div>
-            )} 
+            )}
+            {contract ? (
+              <div>my collection</div>
+            ):(
+              null
+              )}
             <canvas style={{margin:"auto", marginTop:"10px"}} width="150" height="150" id="canvas"></canvas>
             <button style={{color:"white", backgroundColor:"#808080", borderRadius:"2px", marginBottom:"10px",paddingRight:"4px", paddingLeft:"3px", display:"block", margin:"auto"}} 
             onClick={async()=>{
