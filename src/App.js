@@ -245,6 +245,7 @@ function App() {
   }
 
   const getSupply = async() => {
+    console.log("test2")
     const web3 = new Web3(process.env.ENDPOINT);
     console.log(process.env.ENDPOINT)
     const cont = new web3.eth.Contract(washock_ABI,nftAddr)
