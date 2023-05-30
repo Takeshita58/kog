@@ -321,7 +321,7 @@ function App() {
             {contract ? (
               <div style={{textAlign:"center", padding:"5px"}}>
                 {waiting ? (
-                  <>waiting...</>
+                  <div style={{color:"white"}}>waiting...</div>
                 ):(
                   null
                 )}
@@ -332,7 +332,7 @@ function App() {
                 {txHash == null ? (
                   null
                 ):(
-                  <div><a href={txURL} target="_blank" rel="noreferrer">{txHash.substr(0, 5) + "..." + txHash.substr(-4, 4)}</a></div>
+                  <div style={{color:"white"}}><a href={txURL} target="_blank" rel="noreferrer">{txHash.substr(0, 5) + "..." + txHash.substr(-4, 4)}</a></div>
                 )}
               </div>
             ):(
@@ -344,7 +344,7 @@ function App() {
               </div>
             )}
             {contract ? (
-              <div>my collection</div>
+              <div style={{color:"white"}}>my collection</div>
             ):(
               null
               )}
