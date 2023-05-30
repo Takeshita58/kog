@@ -317,7 +317,7 @@ function App() {
           </div>
           <div style={{textAlign:"center"}}>
             {shortAddress == null ? (<div style={{color:"white"}}>please connect metamask wallet</div>):(<div style={{color:"white"}}><span style={{color:"white"}}>Connected Wallet Address: </span>{shortAddress}</div>)}
-            <div style={{color:"white"}}>{supply == null ? ("-"): (<>{supply}</>)} / 100</div>
+            <div style={{color:"white"}}>{supply == null ? ("-"): (<>{100 - supply}</>)} / 100</div>
             {contract ? (
               <div style={{textAlign:"center", padding:"5px"}}>
                 {waiting ? (
